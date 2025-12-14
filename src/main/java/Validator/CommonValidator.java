@@ -1,0 +1,41 @@
+package Validator;
+
+import java.util.regex.Pattern;
+
+public class CommonValidator {
+
+    private CommonValidator() {}
+
+    public static void validateCredentials(String name,String email,String password) {
+        if (name != null ) {
+            validateName(name);
+        }
+        if(email !=null){
+            validateEmail(email);
+        }
+        if(password !=null){
+            validatePassword(password);
+        }
+    }
+
+    public static void validateName(String name) {
+        if (name == null || name.trim().isEmpty() || !Pattern.matches("^[a-zA-Z ]+$", name)) {
+            throw new IllegalArgumentException("Invalid name");
+        }
+    }
+
+    public static void validateEmail(String email) {
+        if (email == null || email.trim().isEmpty() ||
+                !Pattern.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$", email)) {
+            throw new IllegalArgumentException("Invalid email");
+        }
+    }
+
+    public static void validatePassword(String password) {
+        if (password == null || password.trim().isEmpty() || password.length() < 8) {
+            throw new IllegalArgumentException("Invalid password (min 8 characters)");
+        }
+    }
+
+
+}
