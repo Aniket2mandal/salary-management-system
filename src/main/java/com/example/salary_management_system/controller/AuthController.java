@@ -1,8 +1,7 @@
-package controller;
+package com.example.salary_management_system.controller;
 
-import Service.AuthService;
-import Service.UserService;
-import dto.UserDTO;
+import com.example.salary_management_system.Service.AuthService;
+import com.example.salary_management_system.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,8 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
-    @Autowired
+
     private AuthService authService;
+    public AuthController(AuthService authService) {
+        this.authService = authService;
+    }
 
     @PostMapping("register")
     @ResponseBody

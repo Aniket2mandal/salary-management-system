@@ -1,11 +1,12 @@
-package Service.impl;
+package com.example.salary_management_system.Service.impl;
 
-import Service.AuthService;
-import Utils.MyConstants;
-import dao.UserDao;
-import dto.UserDTO;
-import exception.BadRequestException;
-import model.UserDB;
+import com.example.salary_management_system.Service.AuthService;
+import com.example.salary_management_system.Utils.MyConstants;
+import com.example.salary_management_system.Validator.CommonValidator;
+import com.example.salary_management_system.dao.UserDao;
+import com.example.salary_management_system.dto.UserDTO;
+import com.example.salary_management_system.exception.BadRequestException;
+import com.example.salary_management_system.model.UserDB;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +26,8 @@ public class AuthServiceImpl implements AuthService {
             throw new BadRequestException(MyConstants.
                     ERR_MSG_ALREADY_EXISTS+ "user with email: "+user.getEmail());
         }
+
+        CommonValidator.validateCredentials(user.getName(),user.getEmail(),user.getPassword());
 
         UserDB userDB=new UserDB();
         userDB.setName(user.getName());

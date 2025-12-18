@@ -1,4 +1,6 @@
-package Validator;
+package com.example.salary_management_system.Validator;
+
+import com.example.salary_management_system.exception.BadRequestException;
 
 import java.util.regex.Pattern;
 
@@ -20,20 +22,20 @@ public class CommonValidator {
 
     public static void validateName(String name) {
         if (name == null || name.trim().isEmpty() || !Pattern.matches("^[a-zA-Z ]+$", name)) {
-            throw new IllegalArgumentException("Invalid name");
+            throw new BadRequestException("Invalid name");
         }
     }
 
     public static void validateEmail(String email) {
         if (email == null || email.trim().isEmpty() ||
                 !Pattern.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$", email)) {
-            throw new IllegalArgumentException("Invalid email");
+            throw new BadRequestException("Invalid email");
         }
     }
 
     public static void validatePassword(String password) {
         if (password == null || password.trim().isEmpty() || password.length() < 8) {
-            throw new IllegalArgumentException("Invalid password (min 8 characters)");
+            throw new BadRequestException("Invalid password (min 8 characters)");
         }
     }
 

@@ -1,4 +1,4 @@
-package Utils;
+package com.example.salary_management_system.Utils;
 
 public class MyConstants {
 
