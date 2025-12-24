@@ -10,6 +10,7 @@ import com.example.salary_management_system.model.IncomeDB;
 import com.example.salary_management_system.model.UserDB;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -26,9 +27,10 @@ public class IncomeServiceImpl implements IncomeService {
     @Override
    public IncomeDTO createIncome(IncomeDTO incomeDTO){
 
-        Optional<IncomeDB> incomeDTOOptional = incomeDao
-                .findIncomeBySourceMonthUser(incomeDTO.getSource(),incomeDTO.getMonth(),incomeDTO.getUserId());
-        if(incomeDTOOptional.isPresent()){
+        List<IncomeDB> incomeDBOptional = incomeDao
+                .findIncomeBySourceAndMonth(incomeDTO.getSource(),incomeDTO.getMonth(),incomeDTO.getUserId());
+
+        if(!incomeDBOptional.isEmpty()){
             throw new BadRequestException(MyConstants.ERR_MSG_ALREADY_EXISTS+"income");
         }
 

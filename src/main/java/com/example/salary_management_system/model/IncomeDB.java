@@ -43,7 +43,7 @@ public class IncomeDB {
     private UserDB user;
 
     @Column(name = "user_id", insertable = false, updatable = false)
-    private String userId;
+    private Long userId;
 
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;

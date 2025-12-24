@@ -23,7 +23,6 @@ public class IncomeController {
     @ResponseBody
     public ResponseEntity<?> createIncome(@RequestBody IncomeDTO incomeDTO) {
         //SET AUTHENTICATED USERID INCOME INCOMEDTO
-
         return new ResponseEntity<>(incomeService.createIncome(incomeDTO), HttpStatus.OK);
     }
 }

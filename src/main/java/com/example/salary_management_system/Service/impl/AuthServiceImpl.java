@@ -14,8 +14,12 @@ import java.util.Optional;
 
 @Service
 public class AuthServiceImpl implements AuthService {
-    @Autowired
-    private UserDao userDao;
+
+    private final UserDao userDao;
+
+    public AuthServiceImpl(UserDao userDao) {
+        this.userDao = userDao;
+    }
 
     @Override
     public UserDTO registerUser(UserDTO user){
