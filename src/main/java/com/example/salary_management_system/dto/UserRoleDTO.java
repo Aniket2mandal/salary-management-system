@@ -1,6 +1,5 @@
 package com.example.salary_management_system.dto;
 
-import com.example.salary_management_system.enums.RoleType;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,7 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class RoleDTO {
+public class UserRoleDTO {
     private Long id;
-    private RoleType name;
+    private Long userId;
+    private Long roleId;
 }

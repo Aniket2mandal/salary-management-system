@@ -1,5 +1,6 @@
 package com.example.salary_management_system.Utils;
 
+import com.example.salary_management_system.enums.RoleType;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -32,7 +33,7 @@ public class JwtUtils {
     }
 
     // Generate JWT token
-    public String generateToken(String email, String role, Long userId) {
+    public String generateToken(String email, RoleType role, Long userId) {
         return Jwts.builder()
                 .setSubject(email)
                 .claim("role", role)

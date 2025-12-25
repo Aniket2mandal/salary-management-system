@@ -19,7 +19,7 @@ public class IncomeController {
         this.incomeService = incomeService;
     }
 
-    @PostMapping("/")
+    @PostMapping("/create")
     @ResponseBody
     public ResponseEntity<?> createIncome(@RequestBody IncomeDTO incomeDTO) {
         //SET AUTHENTICATED USERID INCOME INCOMEDTO

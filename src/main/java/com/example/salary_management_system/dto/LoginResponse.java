@@ -8,7 +8,12 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class RoleDTO {
-    private Long id;
-    private RoleType name;
+public class LoginResponse {
+    private String message;
+    private boolean success;
+    private String email;
+    private RoleType role;
+    private Long userId;
+    private String token;
+    private String tokenType = "Bearer";
 }
