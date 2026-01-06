@@ -2,6 +2,7 @@ package com.example.salary_management_system.controller;
 
 import com.example.salary_management_system.Service.AuthService;
 import com.example.salary_management_system.dto.UserDTO;
+import com.example.salary_management_system.enums.RoleType;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +23,8 @@ public class AuthController {
     @PostMapping("register")
     @ResponseBody
     public ResponseEntity<?> registerUser(@RequestBody UserDTO user) {
+        RoleType role= RoleType.ROLE_USER;
+        user.setRole(role);
         return new ResponseEntity<>(authService.registerUser(user), HttpStatus.OK);
     }
 

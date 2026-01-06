@@ -12,6 +12,15 @@ import java.time.LocalDateTime;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class IncomeDTO {
 
+    public IncomeDTO(Long id, String source, String amount, String month, Long userId, LocalDateTime date) {
+        this.id = id;
+        this.source = source;
+        this.amount = amount;
+        this.month = month;
+        this.userId = userId;
+        this.date = date;
+    }
+
     private Long id;
 
     private String source;
