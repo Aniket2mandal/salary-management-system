@@ -63,45 +63,6 @@ public class IncomeServiceImpl implements IncomeService {
         return incomeDTOList;
     }
 
-    @Override
-    public SavingFundDTO handleSavingFund(SavingFundDTO savingFundDTO){
-
-        Optional<UserDB> userDBOptional=userDao.findUserById(savingFundDTO.getUserId());
-        if(userDBOptional.isEmpty()){
-            throw new BadRequestException(MyConstants.ERR_MSG_NOT_FOUND+"user");
-        }
-        UserDB userDB = userDBOptional.get();
-
-        Optional<IncomeDB> incomeDBOptional=incomeDao.findByIdAndUserId(savingFundDTO.getIncomeId(),savingFundDTO.getUserId());
-        if(incomeDBOptional.isEmpty()){
-            throw new BadRequestException(MyConstants.ERR_MSG_NOT_FOUND+"income");
-        }
-        IncomeDB incomeDB = incomeDBOptional.get();
-
-        SavingFundDB savingFundDB;
-
-         if(savingFundDTO.getId() != null){
-             Optional<SavingFundDB> savingFundDBOptional=savingFundDao.findById(savingFundDTO.getId());
-             if(savingFundDBOptional.isEmpty()){
-                 throw new BadRequestException(MyConstants.ERR_MSG_NOT_FOUND+"savingFund");
-             }
-            savingFundDB = savingFundDBOptional.get();
-         }else{
-             savingFundDB = new SavingFundDB();
-         }
-
-        savingFundDB.setName(savingFundDTO.getName());
-        savingFundDB.setAmount(savingFundDTO.getAmount());
-        savingFundDB.setDescription(savingFundDTO.getDescription());
-        savingFundDB.setDate(savingFundDTO.getDate());
-        savingFundDB.setUser(userDB);
-        savingFundDB.setIncome(incomeDB);
-        savingFundDao.save(savingFundDB);
-
-        savingFundDTO.setId(savingFundDB.getId());
-
-       return savingFundDTO;
-    }
 
 
 }

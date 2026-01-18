@@ -17,26 +17,33 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "tbl_income")
+@Table(name="tbl_expense")
 @Getter
 @Setter
-public class IncomeDB {
-
+public class ExpenseDB {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="source")
-    private String source;
+    @Column(name="description")
+    private String description;
 
     @Column(name="amount")
     private String amount;
 
-    @Column(name="month")
-    private String month;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "expense_category_id", referencedColumnName = "id")
+    private ExpenseCategoryDB expenseCategory;
 
-    @Column(name="date")
-    private LocalDateTime date;
+    @Column(name = "expense_category_id", insertable = false, updatable = false)
+    private Long expenseCategoryId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "income_id", referencedColumnName = "id")
+    private IncomeDB income;
+
+    @Column(name = "income_id", insertable = false, updatable = false)
+    private Long incomeId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
@@ -61,6 +68,4 @@ public class IncomeDB {
     protected void onUpdate() {
         updatedAt = LocalDateTime.now();
     }
-
-
 }

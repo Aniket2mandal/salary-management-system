@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class SavingFundDTO {
     private Long id;
     private String name;
-    private double amount;
+    private String amount;
     private String description;
     private Long incomeId;
     private Long userId;

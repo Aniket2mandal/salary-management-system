@@ -34,6 +34,7 @@ public class AuthServiceImpl implements AuthService {
     private final JwtUtils jwtUtils;
     private final UserRoleDao userRoleDao;
     private final RoleDao roleDao;
+    private final CommonValidator commonValidator;
 
     @Override
     public UserDTO registerUser(UserDTO user) {
@@ -45,7 +46,7 @@ public class AuthServiceImpl implements AuthService {
                     ERR_MSG_ALREADY_EXISTS+ "user with email: "+user.getEmail());
         }
 
-        CommonValidator.validateCredentials(user.getName(),user.getEmail(),user.getPassword());
+        commonValidator.validateCredentials(user.getName(),user.getEmail(),user.getPassword());
 
         UserDB userDB=new UserDB();
         userDB.setName(user.getName());

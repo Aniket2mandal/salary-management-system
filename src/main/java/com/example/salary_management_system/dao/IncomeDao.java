@@ -18,4 +18,5 @@ public interface IncomeDao extends JpaRepository<IncomeDB, Long> {
 
   Optional<IncomeDB> findByIdAndUserId(Long incomeId, Long userId);
 
+
 }

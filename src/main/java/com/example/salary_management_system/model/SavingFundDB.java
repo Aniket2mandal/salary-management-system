@@ -28,7 +28,7 @@ public class SavingFundDB {
     @Column(name="name", nullable=false)
     private String name;
     @Column(name="amount", nullable=false)
-    private double amount;
+    private String amount;
     @Column(name="description", nullable=false)
     private String description;
     @Column(name="date", nullable=false)

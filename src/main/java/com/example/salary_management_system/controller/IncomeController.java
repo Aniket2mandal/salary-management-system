@@ -44,12 +44,5 @@ public class IncomeController {
         return new ResponseEntity<>(incomeService.getIncomeAndSource(userId),HttpStatus.OK);
     }
 
-    @PostMapping("/savingFund")
-    @ResponseBody
-    public ResponseEntity<?> handleSavingFund(@RequestBody SavingFundDTO savingFundDTO) {
-        Long userId = commonMethods.getAuthenticatedUserId();
-        savingFundDTO.setUserId(userId);
-        return new ResponseEntity<>(incomeService.handleSavingFund(savingFundDTO), HttpStatus.OK);
-    }
 
 }

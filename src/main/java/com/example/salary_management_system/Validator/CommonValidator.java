@@ -1,9 +1,11 @@
 package com.example.salary_management_system.Validator;
 
 import com.example.salary_management_system.exception.BadRequestException;
+import org.springframework.stereotype.Component;
 
 import java.util.regex.Pattern;
 
+@Component
 public class CommonValidator {
 
     private CommonValidator() {}
